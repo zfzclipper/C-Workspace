@@ -22,12 +22,14 @@ public:
 	int size();
 
 	int front();
-	void push_front(const int& data);
+	void push_front(const int& value);
 	void pop_front();
 
 	int back();
-	void push_back(const int& data);
+	void push_back(const int& value);
 	void pop_back();
+
+	void remove(const int& value);
 
 	friend ostream& operator<<(ostream& os, const List& list);
 
@@ -57,16 +59,16 @@ int List::front()
 	return ptr_head->data;
 }
 
-void List::push_front(const int& data)
+void List::push_front(const int& value)
 {
 	if (ptr_head == nullptr)
 	{
-		ptr_head = new Node(data, nullptr);
+		ptr_head = new Node(value, nullptr);
 		ptr_tail = ptr_head;
 		return;
 	}
 
-	ptr_head = new Node(data, ptr_head);
+	ptr_head = new Node(value, ptr_head);
 }
 
 void List::pop_front(void)
@@ -92,6 +94,32 @@ ostream& operator<<(ostream& os, const List& list)
 	}
 
 	return os;
+}
+
+void List::remove(const int& value)
+{
+	if(!ptr_head) return;
+
+	Node* pre_ptr = new Node(0, ptr_head);
+	Node* cur_ptr = ptr_head;
+
+	while(cur_ptr)
+	{
+		if(cur_ptr->data == value)
+		{
+			Node* temp_ptr = cur_ptr;
+
+			pre_ptr->ptr_next = cur_ptr->ptr_next;
+			cur_ptr = pre_ptr->ptr_next;
+
+			delete temp_ptr;
+		}
+		else
+		{
+			cur_ptr = cur_ptr->ptr_next;
+			pre_ptr = pre_ptr->ptr_next;
+		}
+	}
 }
 
 int main()
