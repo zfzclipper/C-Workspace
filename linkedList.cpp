@@ -87,21 +87,24 @@ void List::pop_front(void)
 ostream& operator<<(ostream& os, const List& list)
 {
 	Node* ptr = list.ptr_head;
-	while(ptr)
+	while(ptr != list.ptr_tail)
 	{
 		cout << ptr->data << ", ";
 		ptr = ptr->ptr_next;
 	}
+	cout << ptr->data;
 
 	return os;
 }
 
+#if 1
 void List::remove(const int& value)
 {
 	if(!ptr_head) return;
 
 	Node* pre_ptr = new Node(0, ptr_head);
 	Node* cur_ptr = ptr_head;
+	Node* ptr_beforeHead = pre_ptr;
 
 	while(cur_ptr)
 	{
@@ -120,7 +123,43 @@ void List::remove(const int& value)
 			pre_ptr = pre_ptr->ptr_next;
 		}
 	}
+	
+	ptr_tail = pre_ptr;
+	ptr_head = ptr_beforeHead->ptr_next;
+
+	delete ptr_beforeHead;
 }
+#endif
+
+#if 0
+void List::remove(const int& value)
+{
+	if (!ptr_head) return;
+
+	Node* pre_ptr = new Node(0, ptr_head);
+	Node* before_front_ptr = pre_ptr;
+
+	while(pre_ptr->ptr_next)
+	{
+		if(pre_ptr->ptr_next->data == value)
+		{
+			Node* temp_ptr = pre_ptr->ptr_next;
+
+			pre_ptr->ptr_next = temp_ptr->ptr_next;
+			delete temp_ptr;
+		}
+		else
+		{
+			pre_ptr = pre_ptr->ptr_next;
+		}
+	}
+
+	ptr_tail = pre_ptr;
+	ptr_head = before_front_ptr->ptr_next;
+
+	delete before_front_ptr;
+} 
+#endif
 
 int main()
 {
@@ -130,6 +169,14 @@ int main()
 		mylist.push_front(2*i+1);
 	}
 	
+	cout << mylist << endl;
+
+	mylist.push_front(11);
+
+	cout << mylist << endl;
+
+	mylist.remove(11);
+
 	cout << mylist << endl;
 
 	while(mylist.size())
