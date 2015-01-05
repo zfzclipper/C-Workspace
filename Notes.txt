@@ -1,0 +1,6 @@
+*Tail Recursion
+(1)The use of ONLY ONE recursive call at the VERY END of a function implementation.
+	(a)When the function call is made, there are NO statements left to be executed by the function;
+	(b)The recursive call is not only the last statement, but there are NO earlier recursive calls, direct or indirect;
+(2)Tail recursion could be replaced by one loop.
+
