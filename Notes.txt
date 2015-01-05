@@ -4,3 +4,7 @@
 	(b)The recursive call is not only the last statement, but there are NO earlier recursive calls, direct or indirect;
 (2)Tail recursion could be replaced by one loop.
 
+*Sorting
+(1)It is often necessary to sort data before processing.
+(2)The first step is to choose the criteria that will be used to order data.
+
