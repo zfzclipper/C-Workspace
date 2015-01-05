@@ -17,7 +17,7 @@ class List
 public:
 	List(void) : ptr_head(nullptr), ptr_tail(nullptr) { cout << "Default Constructor" << endl; }
 	List(Node* pHead, Node* pTail) : ptr_head(pHead), ptr_tail(pTail) {}
-	~List() {}
+	~List();
 
 	int size();
 
@@ -37,6 +37,18 @@ private:
 	Node*	ptr_head;
 	Node*	ptr_tail;
 };
+
+List::~List()
+{
+	cout << "Destruct List" << endl;
+
+	while(ptr_head)
+	{
+		Node* ptr = ptr_head->ptr_next;
+		delete ptr_head;
+		ptr_head = ptr;
+	}
+}
 
 int List::size()
 {
@@ -179,8 +191,10 @@ int main()
 
 	cout << mylist << endl;
 
+#if 0
 	while(mylist.size())
 	{
 		mylist.pop_front();
 	}
+#endif
 }
