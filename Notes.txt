@@ -8,3 +8,13 @@
 (1)It is often necessary to sort data before processing.
 (2)The first step is to choose the criteria that will be used to order data.
 
+
+Divide-and-Conquer Approach:
+(1)Divide: Break the problem into several subproblems that are similar to the original problem but smaller in size;
+(2)Conquer: Solve the subproblems recursively;
+(3)Combine: Combine these solutions to create a solution to the original problem;
+
+
+
+
+
