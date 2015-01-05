@@ -86,14 +86,6 @@ void List::push_front(const int& value) {
 	}
 }
 
-int List::back(void) {
-	if (!ptr_tail) {
-		exit(-1);
-	}
-
-	return ptr_tail->data; 
-}
-
 void List::pop_front(void) {
 	if (ptr_head == ptr_tail) {
 		ptr_tail = nullptr;
@@ -103,6 +95,46 @@ void List::pop_front(void) {
 	ptr_head = ptr_head->ptr_next;
 
 	delete front;
+}
+
+int List::back(void) {
+	if (!ptr_tail) {
+		exit(-1);
+	}
+
+	return ptr_tail->data; 
+}
+
+void List::push_back(const int& value) {
+	if (!ptr_tail) {
+		ptr_tail = new Node(value, nullptr);
+		ptr_head = ptr_tail;
+	}
+	else {
+		ptr_tail->ptr_next = new Node(value, nullptr);
+		ptr_tail = ptr_tail->ptr_next;
+	}
+}
+
+void List::pop_back(void) {
+	if (!ptr_tail || !ptr_head) {
+		exit(-1);
+	}
+
+	if (ptr_head == ptr_tail) {
+		delete ptr_tail;
+		ptr_head = ptr_tail = nullptr;
+	}
+	else {
+		Node* ptr = ptr_head;
+		while (ptr->ptr_next != ptr_tail) {
+			ptr = ptr->ptr_next;
+		}
+		delete ptr_tail;
+		
+		ptr->ptr_next = nullptr;
+		ptr_tail = ptr; 
+	}	
 }
 
 ostream& operator<<(ostream& os, const List& list) {
@@ -181,6 +213,12 @@ int main() {
 	
 	cout << mylist << endl;
 
+	for (int i = 0; i < 10; i++) {
+		mylist.push_back(3*i+2);
+	}
+	
+	cout << mylist << endl;
+
 	mylist.push_front(11);
 
 	cout << mylist << endl;
@@ -194,4 +232,7 @@ int main() {
 		mylist.pop_front();
 	}
 #endif
+	while (mylist.size()) {
+		mylist.pop_back();
+	}
 }
