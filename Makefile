@@ -8,7 +8,7 @@ CXX = g++
 #-Wall	turns on most, but not all, compiler warnings
 CXXFLAGS = -g -std=c++11 -Wall
 
-SRCS = linkedList.cpp
+SRCS = mergeSort.cpp
 TARGET = test
 
 all: $(TARGET)
