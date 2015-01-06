@@ -15,9 +15,29 @@
 | Quick Sort |
 --------------
 Divide-and-Conquer Recursive Algorithm;
-Time Complexity: O(n*log(n));
-Worst Case Performance: O(n^2);
+
+Time Complexity: 
+(1)Best Case Performance (balanced partition):		O(n*log(n));
+(2)Worst Case Performance (unbalanced partition):	O(n^2);
+
+The running time depends on whether the partitioning is balanced or unbalanced, which in turn depends on which "pivots" are used for partitioning.
+(1)If the partitioning is balanced, the algorithm runs asymptotically as fast as merge sort O(n*log(n));
+	e.g.: The O(n*log(n)) performance is achieved by equally balancing the two sides of the partition at every level of the recursion,
+(2)If the partitioning is unbalanced, it can run asymptotically as slowly as insertion sort O(n^2);
+	e.g,: The O(n^2) running time occurs when the input array is already completely sorted.
+(3)*The average-case running time of quicksort is much closer to the best case than to the worst case.
+(4)The running time is O(n*lg(n) whenever the split has constant proportionality.	
+	Any split of constant proportionality yields a recursion tree of depth O(lg(n)), where the cost at each level is O(n).
+(5)The running time when levels alternate between good and bad splits is still O(n*lg(n)), but with a slightly larger hidden constant c;
+
+Randomized Quicksort:
+Random Sampling: Randomly choose the pivot element, in order to make the "split" of the input array reasonably "well-balanced" on average.
+
+
 *We can achieve quicksort’s fast running time on almost all inputs, with heapsort’s O(N log N) worst-case running time.
+
+
+
 
 [+]Unlike merge-sort, the height of the quick-sort tree associated with an execution of quick-sort is linear in the worst case.
 	if the sequence consists of n distinct elements and is already sorted
