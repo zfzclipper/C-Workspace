@@ -7,14 +7,45 @@
 *Sorting
 (1)It is often necessary to sort data before processing.
 (2)The first step is to choose the criteria that will be used to order data.
+(3)Two critical properties of sorting algorithms:
+	(a)Number of comparisons;
+	(b)Number of data movements;
 
-
+--------------
+| Merge Sort |
+--------------
+Time Complexity: O(n*log(n));
 Divide-and-Conquer Approach:
 (1)Divide: Break the problem into several subproblems that are similar to the original problem but smaller in size;
 (2)Conquer: Solve the subproblems recursively;
 (3)Combine: Combine these solutions to create a solution to the original problem;
 
 
+------------------
+| Insertion Sort |
+------------------
+Time Complexity: O(n^2);
+Insertion sort consists of N − 1 passes. 
+Invariant: at each pass p <- [1, N-1], elements in positions 0 through p − 1 are already in sorted order.
 
+[+]It sorts the array only when it is really necessary.
+	If the array is already in order: only the variable tmp is initialized, and the value stored in it is moved back to the same position.
+[-]Insertion is not localized: it may require moving a significant number of elements.
+	If an item is being inserted, all elements greater than the one being inserted have to be moved. 
+[-]The number of movements and comparisons for a randomly ordered array is closer to the worst case O(n^2).
 
+------------------
+| Selection Sort |
+------------------
+Time Complexity: O(n^2);
+Invariant: at each pass, the smallest element in the unsorted sub-array is selected and swapped with the first position in unsorted sub-array.
+[+]The required number of assignments is the best compared with any other algorithm.
+
+---------------
+| Bubble Sort |
+---------------
+Time Complexity: O(n^2);
+[-]In the average case, approximately twice as many comparisons, and the same number of moves as insertion sort
+			as many comparisons, and n times more moves than selection sort.
+[-]Insertion sort is twice as fast as bubble sort.
 
