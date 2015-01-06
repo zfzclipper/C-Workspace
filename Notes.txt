@@ -30,8 +30,15 @@ The running time depends on whether the partitioning is balanced or unbalanced, 
 	Any split of constant proportionality yields a recursion tree of depth O(lg(n)), where the cost at each level is O(n).
 (5)The running time when levels alternate between good and bad splits is still O(n*lg(n)), but with a slightly larger hidden constant c;
 
-Randomized Quicksort:
+--------------------
+Randomized Quicksort
+--------------------
+*To get close to the best-case running time, the pivot should be chosen in such a way that the input sequence is almost "equally partitioned".
 Random Sampling: Randomly choose the pivot element, in order to make the "split" of the input array reasonably "well-balanced" on average.
+
+----------------
+In-Place Sorting
+----------------
 
 
 *We can achieve quicksort’s fast running time on almost all inputs, with heapsort’s O(N log N) worst-case running time.
