@@ -6,18 +6,99 @@ using namespace std;
 
 const int N = 18;
 
-void partition(vector<int>&, vector<int>&, int&, vector<int>&);
-void concatenate(vector<int>&, vector<int>&, int&, vector<int>&);
+//#define INPLACE_SINGLE_DIR
 
-void partition(list<int>&, list<int>&, int&, list<int>&);
-void concatenate(list<int>&, list<int>&, int&, list<int>&);
+/* In-place Quick Sort (Array-based single direction) */
+
+#ifdef INPLACE_SINGLE_DIR
+void quickSortKernel(vector<int>&, int, int);
+int partition(vector<int>&, int&, int&);
 
 void inplaceQuickSort(vector<int>& myArray) {
-	size_t N = myArray.size();
+	cout << "Inplace Quick Sort (Array-based single direction)" << endl;
 
-	if (N <= 1) return;
+	int begin = 0;
+	int end = myArray.size();
+
+	quickSortKernel(myArray, begin, end);
 }
 
+void quickSortKernel(vector<int>& myArray, int b, int e) {	
+	if (e-b <= 1) return;
+
+	int pivot = partition(myArray, b, e);
+	quickSortKernel(myArray, b, pivot);
+	quickSortKernel(myArray, pivot+1, e);
+}
+
+int partition(vector<int>& myArray, int& begin, int& end) {
+	int pivotValue = myArray[end-1];
+
+	int i = begin - 1;
+	for (int j = begin; j < end; j++) {
+		if (myArray[j] <= pivotValue) {
+			i++;
+			std::swap(myArray[i], myArray[j]);
+		}
+	}
+
+	return i;	//i is pivot index
+}
+#else
+
+/* In-place Quick Sort (Array-based double direction) */
+
+void quickSortKernel(vector<int>&, int, int);
+int partition(vector<int>&, int&, int&);
+
+void inplaceQuickSort(vector<int>& myArray) {
+	cout << "Inplace Quick Sort (Array-based double direction)" << endl;
+
+	int begin = 0;
+	int end = myArray.size();
+
+	quickSortKernel(myArray, begin, end);
+}
+
+void quickSortKernel(vector<int>& myArray, int b, int e) {	
+	if (e-b <= 1) return;
+
+	int pivot = partition(myArray, b, e);
+	quickSortKernel(myArray, b, pivot);
+	quickSortKernel(myArray, pivot+1, e);
+}
+
+int partition(vector<int>& myArray, int& begin, int& end) {
+	int pivotValue = myArray[end-1];
+
+	int i = begin;
+	int j = end - 2;
+
+	while (i <= j) {
+		while ((i <= j) && (myArray[i] <= pivotValue)) {
+			i++;
+		}
+
+		while ((i <= j) && (myArray[j] > pivotValue)) {
+			j--;
+		}
+
+		if (i < j) {
+			std::swap(myArray[i], myArray[j]);
+		}
+	}
+
+	std::swap(myArray[i], myArray[end-1]);
+
+	return i;	//i is pivot index
+}
+#endif
+
+
+/* Non-inplace Quick Sort (Array-based) */
+
+void partition(vector<int>&, vector<int>&, int&, vector<int>&);
+void concatenate(vector<int>&, vector<int>&, int&, vector<int>&);
 
 void quickSort(vector<int>& myArray) {
 	if (myArray.size() <= 1) return;	//Base Case
@@ -61,6 +142,11 @@ void concatenate(vector<int>& myArray, vector<int>& lessArray, int& pivot, vecto
 	}
 
 }
+
+/* Non-inplace Quick Sort (List-based) */
+
+void partition(list<int>&, list<int>&, int&, list<int>&);
+void concatenate(list<int>&, list<int>&, int&, list<int>&);
 
 void quickSort(list<int>& myList) {
 	if (myList.size() <= 1) return;
@@ -149,7 +235,8 @@ int main() {
 		cout << *it << ", ";
 	}
 
-	quickSort(myArray);
+	//quickSort(myArray);
+	inplaceQuickSort(myArray);	
 
 	cout << "Sorted array: ";
 	for (size_t i = 0; i < myArray.size(); i++) {
