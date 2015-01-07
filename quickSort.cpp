@@ -16,7 +16,6 @@ void inplaceQuickSort(vector<int>& myArray) {
 	size_t N = myArray.size();
 
 	if (N <= 1) return;
-
 }
 
 
