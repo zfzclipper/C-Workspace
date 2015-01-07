@@ -39,7 +39,8 @@ Random Sampling: Randomly choose the pivot element, in order to make the "split"
 ----------------
 In-Place Sorting
 ----------------
-
+It modifies the input sequence using element swapping and does not explicitly create subsequences.
+It reduces the running time caused by the creation of new sequences and the movement of elements between them by a constant factor.
 
 *We can achieve quicksort’s fast running time on almost all inputs, with heapsort’s O(N log N) worst-case running time.
 
