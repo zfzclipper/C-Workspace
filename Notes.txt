@@ -1,15 +1,41 @@
-*Tail Recursion
+------------------
+| Tail Recursion |
+------------------
 (1)The use of ONLY ONE recursive call at the VERY END of a function implementation.
 	(a)When the function call is made, there are NO statements left to be executed by the function;
 	(b)The recursive call is not only the last statement, but there are NO earlier recursive calls, direct or indirect;
 (2)Tail recursion could be replaced by one loop.
 
-*Sorting
+
+------------------
+| Priority Queue |
+------------------
+(1)A priority queue is a container of elements, each associated with a key, which determines the "priority" used to pick elements to be removed. 
+(2)It is an abstract data type(ADT) for storing a collection of prioritized elements that supports:
+	[1]arbitrary element insertion;
+	[2]Removal of elements in order of priority: i.e. the element with first priority can be removed at any time.
+(3)Priority-based data structure: stores elements according to their priorities, and has no external notion of "position."
+   Position-based data structure: stores elements at specific positions (i.e. positions in a linear arrangement of the elements).
+				  e.g. stacks, queues, deques, lists, and even trees
+(4)Primary functions: insert, min, and removeMin.
+
+
+===========
+| Sorting |
+===========
 (1)It is often necessary to sort data before processing.
 (2)The first step is to choose the criteria that will be used to order data.
 (3)Two critical properties of sorting algorithms:
 	(a)Number of comparisons;
 	(b)Number of data movements;
+
+
+-------------
+| Heap Sort |
+-------------
+
+*It is a PriorityQueueSort scheme. 
+
 
 --------------
 | Quick Sort |
@@ -90,6 +116,8 @@ Invariant: at each pass p <- [1, N-1], elements in positions 0 through p − 1 a
 	If an item is being inserted, all elements greater than the one being inserted have to be moved. 
 [-]The number of movements and comparisons for a randomly ordered array is closer to the worst case O(n^2).
 
+*It is a PriorityQueueSort scheme. 
+
 
 ------------------
 | Selection Sort |
@@ -97,6 +125,8 @@ Invariant: at each pass p <- [1, N-1], elements in positions 0 through p − 1 a
 Time Complexity: O(n^2);
 Invariant: at each pass, the smallest element in the unsorted sub-array is selected and swapped with the first position in unsorted sub-array.
 [+]The required number of assignments is the best compared with any other algorithm.
+
+*It is a PriorityQueueSort scheme. 
 
 
 ---------------
