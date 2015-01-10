@@ -35,7 +35,7 @@
 -------------
 
 *It is a PriorityQueueSort scheme. 
-
+Heap allows to perform both insertions and removals in logarithmic time.
 
 --------------
 | Quick Sort |
