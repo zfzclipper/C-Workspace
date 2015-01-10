@@ -36,6 +36,7 @@
 
 *It is a PriorityQueueSort scheme. 
 Heap allows to perform both insertions and removals in logarithmic time.
+Fundamental idea: instead of storing elements and keys in a list, store elements and keys in a binary tree.
 
 --------------
 | Quick Sort |
