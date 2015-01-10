@@ -38,6 +38,9 @@
 Heap allows to perform both insertions and removals in logarithmic time.
 Fundamental idea: instead of storing elements and keys in a list, store elements and keys in a binary tree.
 
+A heap is a binary tree that stores a collection of elements with associated keys at its nodes, and satisfies two additional properties:
+[1]Relational/Heap-order Property: for MIN-heap, the key associated with every node other than the root >= the key associated with its parent.
+
 --------------
 | Quick Sort |
 --------------
