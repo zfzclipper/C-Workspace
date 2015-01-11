@@ -41,6 +41,11 @@ Fundamental idea: instead of storing elements and keys in a list, store elements
 A heap is a binary tree that stores a collection of elements with associated keys at its nodes, and satisfies two additional properties:
 [1]Relational/Heap-order Property: for MIN-heap, the key associated with every node other than the root >= the key associated with its parent.
 
+(1)MAX-HEAPIFY Procedure: O(log(n));
+(2)BUILD-MAX-HEAP Procedure: O(n);	//a max-heap can be built from an unordered array in linear time.
+(3)HEAPSORT Procedure: O(n*log(n));
+
+
 --------------
 | Quick Sort |
 --------------
