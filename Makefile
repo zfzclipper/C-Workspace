@@ -8,7 +8,7 @@ CXX = g++
 #-Wall	turns on most, but not all, compiler warnings
 CXXFLAGS = -g -std=c++11 -Wall
 
-SRCS = heapSort.cpp
+SRCS = quickSort.cpp
 TARGET = test
 
 all: $(TARGET)
