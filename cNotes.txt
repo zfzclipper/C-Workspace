@@ -1,0 +1,23 @@
+stream
+(1)ANY source of input or destination of output.
+(2)Represent files stored on various media, or associated with devices that don't store files.
+
+file pointer
+(1)Type: FILE*, declared in <stdio,h>.
+(2)Used to access a stream in C program.
+(3)Three standard streams (FILE*):
+   [1]stdin, keyboard(default), input redirection <
+   [2]stdout, screen(default), output redirection > 
+   [3]stderr, screen(default), output redirection >
+(4)Writing error messages to "stderr" instead of "stdout", guarantees that those error messages appear on screen even when stdout is redirected.
+
+NOTE: 
+Where is it defined: http://stackoverflow.com/questions/6906238/where-is-stdin-defined-in-c-standard-library
+
+text file vs. binary file
+(1)bytes in text file represents characters; 
+   bytes in binary file doesn't necessary represent characters (e.g. groups of bytes may represent other data types like integers)
+(2)text files are divided into lines; each line ends with one or two special characters.
+   text files may contain a special "end-of-file" marker.
+(3)binary files aren't divided into lines; there are no end-of-line or end-of-file markers; all bytes are treated equally.
+
