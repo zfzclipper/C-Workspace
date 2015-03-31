@@ -21,3 +21,18 @@ text file vs. binary file
    text files may contain a special "end-of-file" marker.
 (3)binary files aren't divided into lines; there are no end-of-line or end-of-file markers; all bytes are treated equally.
 
+Open a file
+(1)FILE* fopen(const char* restrict filename, const char* restrict mode);
+(2)a null pointer is returned when fopen cannot open a file.
+(3)Mode string specifies:
+   [1]Operations(read/write/append) to be performed;
+   [2]file format(text/binary);
+(4)Switch between read and write operations:
+   [1]read ----> write: call file-positioning function, or reading reaches the end of file.
+   [2]write ----> read: call fflush, or file-positioning function.
+
+Close a file
+(1)int fclose(FILE* stream);
+(2)Returns 0 if file is closed successfully. Otherwise, returns the error code EOF (i.e. a macro defined in <stdio.h>).
+
+
