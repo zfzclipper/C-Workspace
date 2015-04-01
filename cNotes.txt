@@ -35,4 +35,6 @@ Close a file
 (1)int fclose(FILE* stream);
 (2)Returns 0 if file is closed successfully. Otherwise, returns the error code EOF (i.e. a macro defined in <stdio.h>).
 
-
+Append a file
+(1)FILE* freopen(const char* filename, const char* mode, FILE* stream);
+(2)Attach a different file to a stream that is already open. To associate a file with one of standard streams(stdin, stdout, or stderr).
