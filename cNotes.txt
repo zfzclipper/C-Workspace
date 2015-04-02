@@ -38,3 +38,33 @@ Close a file
 Append a file
 (1)FILE* freopen(const char* filename, const char* mode, FILE* stream);
 (2)Attach a different file to a stream that is already open. To associate a file with one of standard streams(stdin, stdout, or stderr).
+
+Temporary File
+(1)FILE* tmpfile(void);
+   [1]Creates a temporary file (opened in "wb+" mode) that will exist until it's closed or program ends.
+   [2]Returns a file pointer.
+   [3]Two limitations:
+	- The name of the file created by tmpfile is "unknown";
+	- Cannot make the file permanent later.
+(2)char* tmpnam(char* filename);
+	L_tmpnam: macro defined in <stdio.h>, specifies the size of character array.
+	TMP_MAX: macro defined in <stdio.h>, specifies the maximum number of temporary file names that can potentially be generated.
+
+File Buffering
+(1)Idea: 
+	Disk dirve is slow, infeasible for program to access disk file directly.
+	Data written to a stream is stored in a buffer area in memory, when it's full or the stream is closed, the buffer is flushed.
+	Input stream is buffered in similar way: the buffer contains data from input device. Program reads input from buffer rather than device,
+(2)int fflush(FILE* stream);	
+   [1]Flush the buffer of file associated with the file pointer FILE*, flush all output streams when NULL;
+   [2]Returns 0 when successful, EOF when error occurs.
+(3)int setvbuf(FILE * stream, char * buf, int mode, size_t size);
+
+File operations working with filenames
+(1)int remove(const char* filename);
+(2)int rename(const char* old, const char* new);
+
+
+
+
+ 
